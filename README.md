@@ -54,6 +54,8 @@
 ## Hardware Deployment ##
 To deploy the trained model on your real robot, please follow the instructions in [Deploy.md](./hardware_script/README.md).
 
+## Acknowledgement
+This project is supported by Shanghai Qi Zhi Institute and ONR grant N00014-20-1-2675 and has been partially funded by the Shanghai Frontiers Science Center of Human-centered Artificial Intelligence. The experiments of this work were supported by the core facility Platform of Computer Science and Communication, SIST, ShanghaiTech University. Thanks to Qi Wu for the detailed technical support. We thank Zipeng Fu, Xuxin Cheng, Wenhao Yu and Erwin Coumans for the feedback and discussion.
 
 ## Citation ##
 ```
