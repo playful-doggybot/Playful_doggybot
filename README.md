@@ -52,7 +52,7 @@
     - (Optional) Substitute `play.py` with `play_node.py`, which enables you to record all the reward and other kind of information during the visulization as a `.mcap` bag file. We recommand the tool [Foxglove Studio](https://docs.foxglove.dev/docs/introduction/) to replay the bag files for easily debugging and reward engineering.
 
 ## Hardware Deployment ##
-To deploy the trained model on your real robot, please follow the instructions in [Deploy.md](Deploy.md).
+To deploy the trained model on your real robot, please follow the instructions in [Deploy.md](./hardware_script/README.md).
 
 
 ## Citation ##
