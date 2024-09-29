@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: legged_gym
+Version: 1.0.2
+Summary: Isaac Gym environments for Legged Robots
+Author: Ziwen Zhuang, Nicolas Rudin
+Author-email: 
+License: BSD-3-Clause
+Requires-Dist: isaacgym
+Requires-Dist: rsl-rl
+Requires-Dist: matplotlib
+Requires-Dist: tensorboardX
+Requires-Dist: debugpy

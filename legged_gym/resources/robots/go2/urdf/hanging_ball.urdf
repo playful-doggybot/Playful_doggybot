@@ -1,0 +1,193 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="square_with_linkage">
+  <material name="ball_color">
+        <color rgba="0.5 0. 0. 1.0"/>
+  </material>
+
+  <link name="base">
+    <!-- <visual>
+    <origin rpy="0 0 0" xyz="0. 0.0 0.0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02" />
+      </geometry>
+    </visual> -->
+    <!-- <collision>
+    <origin rpy="0 0 0" xyz="0. 0.0 0.0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.05"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.00005" ixy="0" ixz="0" iyy="0.00005" iyz="0" izz="0.00009"/>
+    </inertial>
+  </link>
+
+  <link name="rod_virtual_revolute_link">
+    <inertial>
+      <mass value="0.01" />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+  </link>
+
+  <link name="rod_link">
+    <visual>
+      <origin rpy="0 0 0." xyz="0. 0.0 -0.12"/>
+      <geometry>
+        <cylinder length="0.2" radius="0.002" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0. 0.0 -0.12"/>
+      <geometry>
+        <cylinder length="0.2" radius="0.002" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.01" />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+  </link>
+
+  <link name="rod_1_virtual_revolute_link">
+    <inertial>
+      <mass value="0.01" />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+  </link>
+
+  <link name="rod_link_1">
+    <visual>
+      <origin rpy="0 0 0." xyz="0. 0.0 -0.075"/>
+      <geometry>
+        <cylinder length="0.15" radius="0.002" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0. 0.0 -0.075"/>
+      <geometry>
+        <cylinder length="0.15" radius="0.002" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.01" />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+  </link>
+
+  <link name="rod_2_virtual_revolute_link">
+    <inertial>
+      <mass value="0.01" />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+  </link>
+
+  <link name="rod_link_2">
+    <visual>
+      <origin rpy="0 0 0." xyz="0. 0.0 -0.025"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.002" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0. 0.0 -0.025"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.002" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.01" />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+  </link>
+
+  <link name="ball_link">
+    <visual>
+      <origin rpy="0 0 0." xyz="0. 0.0 -0.0"/>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+      <material name="ball_color" />
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0. 0.0 0.0"/>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1." />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+  </link>
+
+  <joint name="base_to_virtual_rod_x_joint" type="revolute">
+    <parent link="base"/>
+    <child link="rod_virtual_revolute_link"/>
+    <origin xyz="0. 0. 0." rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <!-- <limit lower="-2" upper="2." /> -->
+    <dynamics damping="0.0" friction="0.01"/>
+  </joint>
+
+  <joint name="virtual_rod_x_to_rod_joint" type="revolute">
+    <parent link="rod_virtual_revolute_link"/>
+    <child link="rod_link"/>
+    <origin xyz="0. 0. -0." rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <!-- <limit lower="-2" upper="2." /> -->
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <joint name="rod_to_rod_1_virtual_joint" type="revolute">
+    <parent link="rod_link"/>
+    <child link="rod_1_virtual_revolute_link"/>
+    <origin xyz="0. 0. -0.23" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <!-- <limit lower="-2" upper="2." /> -->
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <joint name="rod_1_virtual_to_rod_1_joint" type="revolute">
+    <parent link="rod_1_virtual_revolute_link"/>
+    <child link="rod_link_1"/>
+    <origin xyz="0. 0. -0." rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <!-- <limit lower="-2" upper="2." /> -->
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <joint name="rod_to_rod_2_virtual_joint" type="revolute">
+    <parent link="rod_link_1"/>
+    <child link="rod_2_virtual_revolute_link"/>
+    <origin xyz="0. 0. -0.16" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <!-- <limit lower="-2" upper="2." /> -->
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <joint name="rod_2_virtual_to_rod_2_joint" type="revolute">
+    <parent link="rod_2_virtual_revolute_link"/>
+    <child link="rod_link_2"/>
+    <origin xyz="0. 0. -0." rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <!-- <limit lower="-2" upper="2." /> -->
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <joint name="rod_to_ball_joint" type="fixed">
+    <parent link="rod_link_2"/>
+    <child link="ball_link"/>
+    <origin xyz="0. 0. -0.1" rpy="0 0 0" />
+  </joint>
+
+</robot>
